@@ -1,0 +1,17 @@
+.detailedView{
+    margin-left: 200px;
+    margin-top: 100px;
+}
+#UpdateButton{
+    margin-left: 250px;
+}
+
+input{
+    border-radius: 20px;
+    padding: 20px; 
+    background: lightblue;
+}
+h1{
+    margin-left: 100px;
+    margin-top: 15px;
+}
