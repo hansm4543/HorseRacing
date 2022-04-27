@@ -8,14 +8,16 @@ exports.getHorseRaces = async (req, res) => {
 
 exports.createHorseRace = async (req, res) => {
 
-    const {horseracename, place, date, status} = req.body;
-
+    const {horseracename, place, date} = req.body;
+    const status = "initialized";
   const newHorseRace = {
     horseracename,
     place,
     date,
     status
   }
+
+  if ("2020-07-25T14:10:26.113Z" > date) res.status(404).send("Wrong date")
 
   const createdHorseRace = new HorseRace(newHorseRace)
 

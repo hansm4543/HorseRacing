@@ -37,21 +37,23 @@ function AddHorseRaceForm(){
     }
 
     const onSubmit= () => {
-        
+
         axios.post('http://localhost:5000/api/horseRace/create', {
             horseracename: document.querySelector("#horseracename").value,
             place: document.querySelector("#place").value,
             date: document.querySelector("#date").value,
-            status: document.querySelector("#status").value,
-          })
-          .then(function (response) {
+            //status: document.querySelector("#status").value,
+
+        }).then(response => {
             console.log(response);
             dispatch(updateLoad([true]))
             routeChange()
-          })
-          .catch(function (error) {
+
+        }).catch(error => {
             console.log(error);
         });
+
+
         
     };
 
@@ -82,11 +84,6 @@ function AddHorseRaceForm(){
                 <label>Place: 
                 <br></br>
                     <input type="text" id='place'  size="50"/>
-                </label>
-                <br></br>
-                <label>Status:
-                <br></br>
-                    <input type="text" id='status'  size="50"/>
                 </label>
                 <br></br>
                 <br></br>
