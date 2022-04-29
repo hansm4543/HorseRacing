@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect, useState } from "react";
-import { horseRaceReducer, loadReducer } from "./reducer";
+import { horseRaceReducer, loadReducer, authReducer  } from "./reducer";
 import combineReducers from "react-combine-reducers";
 
 const initalHorseRaces = {
@@ -11,10 +11,17 @@ const initalLoad = {
     data: [true]
 
 }
+const initalAuth = {
+    token: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+}
 
 const [combinedReducer, initialState] = combineReducers({
     horseRaces: [horseRaceReducer, initalHorseRaces],
     load: [loadReducer, initalLoad],
+    auth: [authReducer, initalAuth]
 
 })
 

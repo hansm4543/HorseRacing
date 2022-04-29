@@ -36,7 +36,7 @@ function Main(){
         
     
     },[state, isLoading])
-
+    
     const routeChange = () =>{ 
         let path = `/addHorseRaceForm`; 
         navigate(path);

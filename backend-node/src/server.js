@@ -6,7 +6,7 @@ require("dotenv").config()
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
 const horseRaceRoutes = require('./routes/horseRace');
-const commentRoutes = require('./routes/comment');
+const horseRoutes = require('./routes/horse');
 
 const app = express()
 app.use(express.json());
@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/horseRace', horseRaceRoutes);
-app.use('/api/comment', commentRoutes);
+app.use('/api/horse', horseRoutes);
 
 
 app.get('/', (req, res) => {

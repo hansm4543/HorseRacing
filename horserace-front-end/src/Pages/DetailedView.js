@@ -6,113 +6,160 @@ import { Button } from 'antd';
 import 'antd/dist/antd.css';
 import { useNavigate } from "react-router-dom";
 import './DetailedView.css';
-
+import {addHorseRace, updateLoad, updateHorseRaces} from "../store/actions"
+import AddHorse from '../component/AddHorse';
+import HorseList from '../component/HorseList';
 
 let i;
-
+let element =[]
 function DetailedView(){
     let navigate = useNavigate(); 
 
-    let element;
-    const itemID = window.location.href.split("/item/")[1];
-    console.log(itemID)
+    const raceID = window.location.href.split("/horseRace/")[1];
+    //console.log(raceID)
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(true);
 
     const [detailedelement, setElement] = useState([]);
+    const [allHorses, setAllHorses] = useState([]);
+    const [alreadyloaded, setAlreadyLoaded] = useState(true);
 
     useEffect(() =>{
+        
         if(state.load.data[0]){
-            axios.get('../Shipments.json')
-            .then(data => {
-                //dispatch(updatePosts(data.data))
+            fetch('http://localhost:5000/api/horseRace').then(res => {
 
+                return res.json()
+
+            }).then(data => {
+                //console.log(data)
+                //console.log(data[0]._id)
+                //console.log(data.length)
+                dispatch(updateHorseRaces(data))
+                for (let m = 0; m < data.length; m++) {
+                    if(data[m]._id == raceID){
+                        let object = { 
+                            _id: data[m]._id,
+                            date: data[m].date,
+                            horseracename: data[m].horseracename,
+                            place: data[m].place,
+                            status: data[m].status,
+                            createdAt: data[m].createdAt
+                        }
+                        setElement([object]);
+                        //setAlreadyLoaded(false);
+                    }
+                   
+                }
+            
             }).catch(err => console.log(err))
 
-           //dispatch(updateLoad([false]))
-        }
+            fetch('http://localhost:5000/api/horse/').then(res => {
 
+                return res.json()
 
-        //console.log(state);
-        console.log(state.posts.data);
+            }).then(data => {
+                //console.log(data)
+                let horses = [];
+                let number = 0;
+                for (let m = 0; m < data.length; m++) {
+                    if(data[m].horseRaceId == raceID){
+                        let objectHorse = { 
+                            key: data[m]._id,
+                            _id: data[m]._id,
+                            horseName: data[m].horseName,
+                            color: data[m].color
+                        }
+                        horses.push(objectHorse);
+                        number++;
+                        
+                    }
+                    
+                }
+                setAllHorses([horses]);
+            
+            }).catch(err => console.log(err))
 
-        for(i= 0; i<state.posts.data.length; i++){
-            if(state.posts.data[i].orderNo == itemID){
-                //element = state.posts.data[i];
-                //console.log(element)
-                setElement(state.posts.data[i])
-                //console.log(detailedelement)
+            dispatch(updateLoad([false]))
+        }else if(alreadyloaded){
+            for (let m = 0; m < state.horseRaces.data.length; m++) {
+                if(state.horseRaces.data[m]._id == raceID){
+                    let object = { 
+                        _id: state.horseRaces.data[m]._id,
+                        date: state.horseRaces.data[m].date,
+                        horseracename: state.horseRaces.data[m].horseracename,
+                        place: state.horseRaces.data[m].place,
+                        status: state.horseRaces.data[m].status,
+                        createdAt: state.horseRaces.data[m].createdAt
+                    }
+                    setElement([object]);
+                    setAlreadyLoaded(false)
+                }
+               
             }
+
+            fetch('http://localhost:5000/api/horse/').then(res => {
+
+                return res.json()
+
+            }).then(data => {
+                //console.log(data)
+                let horses = [];
+                let number = 0;
+                for (let m = 0; m < data.length; m++) {
+                    if(data[m].horseRaceId == raceID){
+                        let objectHorse = { 
+                            key: data[m]._id,
+                            _id: data[m]._id,
+                            horseName: data[m].horseName,
+                            color: data[m].color
+                        }
+                        horses.push(objectHorse);
+                        number++;
+                        
+                    }
+                    
+                }
+                setAllHorses([horses]);
+            
+            }).catch(err => console.log(err))
         }
-        setIsLoading(false)
-        console.log(state)
+        console.log(state);
+        //setIsLoading(false)
+        //console.log(detailedelement)
+        //console.log(allHorses)
+
+
+        
+        
     
-    },[state, isLoading])
-
-    const routeChange = () =>{ 
-        let path = `/`; 
-        navigate(path);
-      }
-
-    const onSubmit= () => {
-        let values = [document.querySelector("#Consignee").value, document.querySelector("#Customer").value,document.querySelector("#Date").value, document.querySelector("#OrderNo").value, document.querySelector("#Status").value, document.querySelector("#TrackingNo").value]
-        //console.log(itemID)
-        console.log(values)
-        //dispatch(changePost(values));
-        routeChange()
-    };
+    },[state, detailedelement])
 
 
-    if(isLoading === true){
+
+    
+    if(alreadyloaded === false){
         return(
-        <div>
-            Loading...
-        </div>);
+            <div>
+                <h1>DetailedView</h1>
+                <p>ID: {detailedelement[0]._id}</p>
+                <p>Name: {detailedelement[0].horseracename}</p>
+                <p>Date: {detailedelement[0].date}</p>
+                <p>Place: {detailedelement[0].place}</p>
+                <p>Status: {detailedelement[0].status}</p>
+                <p>CreatedAt: {detailedelement[0].createdAt}</p>
+                <AddHorse raceID={raceID}/>
+                <HorseList horses={allHorses[0]}/>
+    
+            </div>
+        )
     }
-
     return(
         <div>
-            <h1>DetailedView</h1>
-            <div className='detailedView'>
-                <h4>OrderNo:
-                <br></br>
-                    <input readOnly type="text" id='OrderNo'  value={detailedelement.orderNo} size="50"/>
-                </h4>
-                <br></br>
-                <br></br>
-                <label>Date:
-                <br></br>
-                    <input type="text" id='Date'  defaultValue={detailedelement.date} size="50"/>
-                </label>
-                <br></br>
-                <label>Customer:
-                <br></br>
-                    <input type="text" id='Customer' defaultValue={detailedelement.customer} size="50"/>
-                </label>
-                <br></br>
-                <label>TrackingNo: 
-                <br></br>
-                    <input type="text" id='TrackingNo'  defaultValue={detailedelement.trackingNo} size="50"/>
-                </label>
-                <br></br>
-                <label>Status:
-                <br></br>
-                    <input type="text" id='Status'  defaultValue={detailedelement.status} size="50"/>
-                </label>
-                <br></br>
-                
-                <label>Consignee:
-                <br></br>
-                    <input type="text" id='Consignee'   defaultValue={detailedelement.consignee} size="50"/>
-                </label>
-                <br></br>
-                <br></br>
-                <div id='UpdateButton'>
-                <Button onClick={() => onSubmit()}> Update </Button>
-                </div>
-            </div>
-
+            <h1>Something went wrong</h1>
+            
         </div>
     )
+    
 }
 export default DetailedView;
