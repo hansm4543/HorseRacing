@@ -36,13 +36,24 @@ Main Idea:
 
 </br>
 
-## How to boot the application(no point, because the application is deployed):
+## How to boot the application(no reason to do that, because the application is deployed):
 * Open up cmd and cd into backend-node folder and then npm start
 * Open up another cmd and cd into horserace-front-end folder and then npm install. After packages are installed you can npm start and the application will pop up.
 
 </br>
 
 ## Images of the application
-* coming soon
-
+* HomePage
+![Source code](images/HomePage.PNG)
+* Main page
+![Source code](images/Main.PNG)
+* EventView
+![Source code](images/EventView.PNG)
+* Login Form
+![Source code](images/LogIn.PNG)
+* Register
+![Source code](images/Register.PNG)
+* AddRace Form
+![Source code](images/AddRace.PNG)
+</br>
 
