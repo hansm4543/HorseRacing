@@ -11,7 +11,7 @@ import HorseListTable from './HorseListTable';
 import href from '../component/href'
 
 function HorseList(props){ 
-    console.log(props.raceID)  
+    //console.log(props.raceID)  
     const [state, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(true);
     const [bettings, setBettings] = useState([]);
@@ -26,7 +26,7 @@ function HorseList(props){
                 //userEmail: "kringel@gmail.com",
 
             }).then(response => {
-                console.log(response)
+                //console.log(response)
 
                 if(response.data.length === 0) {
                 // console.log(response.data);
@@ -50,8 +50,8 @@ function HorseList(props){
         }
         
         //setIsLoading(false);
-        console.log(bettings)
-        console.log(bettings.hasOwnProperty('horseId'))
+        //console.log(bettings)
+        //console.log(bettings.hasOwnProperty('horseId'))
     },[isLoading, bettings])
 
 
