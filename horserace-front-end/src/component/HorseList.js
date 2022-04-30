@@ -8,6 +8,7 @@ import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import HorseListTable from './HorseListTable';
+import href from '../component/href'
 
 function HorseList(props){ 
     console.log(props.raceID)  
@@ -18,7 +19,7 @@ function HorseList(props){
     useEffect(() =>{
         if(isLoading){
            
-            axios.post('http://localhost:5000/api/betting/hasBetted', {
+            axios.post(href+'api/betting/hasBetted', {
                 raceId: props.raceID,
                 userEmail: state.auth.email,
                 //userEmail: "annpit@hot.ee",

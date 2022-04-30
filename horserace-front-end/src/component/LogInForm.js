@@ -1,5 +1,6 @@
 import { Form, Input, Button } from 'antd'
 import {UserAddOutlined} from '@ant-design/icons'
+import href from '../component/href'
 
 function LogInForm(props){    
 
@@ -7,7 +8,7 @@ function LogInForm(props){
     const onFinish = (values) => {
         console.log('Formi v22rtused:', values)
         try{
-            fetch('http://localhost:5000/api/auth/login', {
+            fetch(href+'api/auth/login', {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {'Content-Type':'application/json'}

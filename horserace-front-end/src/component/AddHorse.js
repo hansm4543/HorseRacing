@@ -7,6 +7,8 @@ import {updateLoad} from "../store/actions"
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import href from '../component/href'
+
 function AddHorse(props){   
     const [state, dispatch] = useContext(Context);
     let navigate = useNavigate(); 
@@ -21,7 +23,7 @@ function AddHorse(props){
             console.log("add name")
         }else{
             console.log(props.raceID)
-            axios.post('http://localhost:5000/api/horse/create', {
+            axios.post(href+'api/horse/create', {
                 horseRaceId: props.raceID,
                 horseName: document.querySelector("#horsename").value,
                 color: document.querySelector("#colorPicker").value,

@@ -9,6 +9,8 @@ import './DetailedView.css';
 import {addHorseRace, updateLoad, updateHorseRaces} from "../store/actions"
 import AddHorse from '../component/AddHorse';
 import HorseList from '../component/HorseList';
+import href from '../component/href'
+
 var today = new Date();
 if((today.getMonth()+1) < 10){
     var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
@@ -62,7 +64,7 @@ function DetailedView(){
     useEffect(() =>{
         
         if(state.load.data[0]){
-            fetch('http://localhost:5000/api/horseRace').then(res => {
+            fetch(href+'api/horseRace').then(res => {
 
                 return res.json()
 
@@ -89,7 +91,7 @@ function DetailedView(){
             
             }).catch(err => console.log(err))
 
-            fetch('http://localhost:5000/api/horse/').then(res => {
+            fetch(href+'api/horse/').then(res => {
 
                 return res.json()
 
@@ -133,7 +135,7 @@ function DetailedView(){
                
             }
 
-            fetch('http://localhost:5000/api/horse/').then(res => {
+            fetch(href+'api/horse/').then(res => {
 
                 return res.json()
 
@@ -177,28 +179,40 @@ function DetailedView(){
         if((dateTime+":00.000Z") > detailedelement[0].date){
             return (
                 <div>
-                <h1>DetailedView</h1>
-                <p>ID: {detailedelement[0]._id}</p>
-                <p>Name: {detailedelement[0].horseracename}</p>
-                <p>Date: {detailedelement[0].date}</p>
-                <p>Place: {detailedelement[0].place}</p>
-                <p>Status: {detailedelement[0].status}</p>
-                <p>CreatedAt: {detailedelement[0].createdAt}</p>
-                <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
-                
-    
-            </div>
+                    <div className='DetailedViewItems'>
+                    <h1>DetailedView</h1>
+                    <h2>Race ID: {detailedelement[0]._id}</h2>
+                    <h4>Race was created at: {detailedelement[0].createdAt}</h4>
+                    </div>
+                    <div className="grid-containerDetailedView">
+                        <p className='grid-itemDetailedView'><span className="makeBold">Name: </span>{detailedelement[0].horseracename}</p>
+                        <p className='grid-itemDetailedViewEmpty'></p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Date: </span>{detailedelement[0].date}</p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Place: </span>{detailedelement[0].place}</p>
+                        <p className='grid-itemDetailedViewEmpty'></p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Status: </span>{detailedelement[0].status}</p>
+                    </div>
+                    <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
+                    
+        
+                </div>
             );
         }else{
             return(
                 <div>
+                    <div className='DetailedViewItems'>
                     <h1>DetailedView</h1>
-                    <p>ID: {detailedelement[0]._id}</p>
-                    <p>Name: {detailedelement[0].horseracename}</p>
-                    <p>Date: {detailedelement[0].date}</p>
-                    <p>Place: {detailedelement[0].place}</p>
-                    <p>Status: {detailedelement[0].status}</p>
-                    <p>CreatedAt: {detailedelement[0].createdAt}</p>
+                    <h2>Race ID: {detailedelement[0]._id}</h2>
+                    <h4>Race was created at: {detailedelement[0].createdAt}</h4>
+                    </div>
+                    <div className="grid-containerDetailedView">
+                        <p className='grid-itemDetailedView'><span className="makeBold">Name: </span>{detailedelement[0].horseracename}</p>
+                        <p className='grid-itemDetailedViewEmpty'></p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Date: </span>{detailedelement[0].date}</p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Place: </span>{detailedelement[0].place}</p>
+                        <p className='grid-itemDetailedViewEmpty'></p>
+                        <p className='grid-itemDetailedView'><span className="makeBold">Status: </span>{detailedelement[0].status}</p>
+                    </div>
                     <AddHorse raceID={raceID}/>
                     <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
                     

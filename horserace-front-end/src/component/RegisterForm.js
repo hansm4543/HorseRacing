@@ -1,6 +1,7 @@
 import { Form, Input, Button } from 'antd'
 import {UserAddOutlined} from '@ant-design/icons'
 import '../Pages/Register.css'
+import href from '../component/href'
 
 
 function RegisterForm(props) {
@@ -11,7 +12,7 @@ function RegisterForm(props) {
       let text = {"email" : values.email}
       console.log(text);
         try{
-          fetch('http://localhost:5000/api/auth/registerEmailCheck', {
+          fetch(href+'api/auth/registerEmailCheck', {
               method: 'POST',
               body: JSON.stringify(text),
               headers: {'Content-Type':'application/json'}
@@ -37,7 +38,7 @@ function RegisterForm(props) {
         if(values.password === values.confirmPassword){
           console.log('Success:', values)
           try{
-            fetch('http://localhost:5000/api/auth/signup', {
+            fetch(href+'api/auth/signup', {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {'Content-Type':'application/json'}

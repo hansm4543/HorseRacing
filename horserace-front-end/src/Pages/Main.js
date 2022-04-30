@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext } from 'react'
 import {Context} from "../store";
 import {updateHorseRaces, updateLoad} from "../store/actions"
+import './Main.css';
 
 import MyTable from '../component/MyTable'
-import AddHorseRaceForm from '../component/AddHorseRaceForm'
+import href from '../component/href'
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 
 function Main(){
+    console.log(href)
     let navigate = useNavigate(); 
     const [state, dispatch] = useContext(Context);
     console.log(state.load.data[0])
@@ -16,7 +18,7 @@ function Main(){
 
     useEffect(() =>{
         if(state.load.data[0]){
-            fetch('http://localhost:5000/api/horseRace').then(res => {
+            fetch(href+'api/horseRace').then(res => {
 
                 return res.json()
 
@@ -57,8 +59,10 @@ function Main(){
 
     return(
         <div>
-            <h1>HorseRaces</h1>
-            <Button onClick={onClick}>Add a Horse Race</Button>
+            <div className='mainPage'>
+            <h1>HorseRaces Page</h1>
+            <Button id="goToAddRaceBtn" onClick={onClick}>Click here to insert a Horse Race</Button>
+            </div>
             <MyTable horseRaces={state.horseRaces.data} />
         </div>
     )

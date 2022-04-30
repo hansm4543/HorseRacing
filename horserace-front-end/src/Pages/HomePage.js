@@ -17,7 +17,7 @@ function HomePage(){
         <div>
             <div className="grid-container">
                 <div className="grid-item1">
-                    <h1 id="tervitus">Welcome to HorseRacing</h1>
+                    <h1 id="tervitus">HorseRacing</h1>
                 </div>
                 <div className="grid-item2">
                     <img className="avalehelogoke" src="/horse.png" alt="Logo"></img>

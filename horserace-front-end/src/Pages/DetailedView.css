@@ -13,7 +13,25 @@ input{
 }
 
 */
-h1{
-    margin-left: 100px;
-    margin-top: 15px;
+.grid-containerDetailedView{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding-left: 500px;
+    padding-right: 500px;
+}
+.grid-itemDetailedView{
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    background-color: rgb(171, 207, 236);
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.makeBold{
+    font-weight: bold;
+}
+
+.DetailedViewItems{
+    margin-left: 30px;
 }

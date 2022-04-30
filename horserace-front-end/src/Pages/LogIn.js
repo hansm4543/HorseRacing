@@ -35,19 +35,20 @@ function LogIn(){
     }
 
     return(
-       
-        <div class="grid-container">
-            <div class="grid-item1">
-                <h1 id="tervitus">Login</h1>
-            </div>
-            <LogInForm onLogInUser={itemSubmitHandler}/>
-            <div class="grid-item">
-                <Link to="/register">
-                    <Button type="default" id="loginlehenupp2"><UserAddOutlined/>Register</Button>
-                </Link>
-            </div>
-            <div class="grid-item">
-            <span id="numbrike"></span>
+       <div className="loginPage">
+            <div className="grid-container">
+                <div className="grid-item1">
+                    <h1 id="tervitus">Login</h1>
+                </div>
+                <LogInForm onLogInUser={itemSubmitHandler}/>
+                <div className="grid-item">
+                    <Link to="/register">
+                        <Button type="default" id="loginlehenupp2"><UserAddOutlined/>Register</Button>
+                    </Link>
+                </div>
+                <div className="grid-item">
+                <span id="numbrike"></span>
+                </div>
             </div>
         </div>
 

@@ -19,14 +19,14 @@
 }
 
 #regalehenupp1{
-    background-color: aquamarine;
+    background-color: rgb(0, 204, 255);
     background-size: auto;
     transform: scale(2);
 }
 #regalehenupp1:hover{
     cursor: pointer;
     color: white;
-    background-color: green;
+    background-color: rgb(72, 126, 206);
     background-size: auto;
     transform: scale(2);
 }
@@ -34,14 +34,14 @@
     padding-bottom: 20px;
 }
 #regalehenupp2{
-    background-color: aquamarine;
+    background-color: rgb(0, 204, 255);
     background-size: auto;
     transform: scale(1.3);
 }
 #regalehenupp2:hover{
     cursor: pointer;
     color: white;
-    background-color: green;
+    background-color: rgb(72, 126, 206);
     background-size: auto;
     transform: scale(1.3);
 }

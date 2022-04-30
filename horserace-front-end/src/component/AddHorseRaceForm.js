@@ -4,6 +4,8 @@ import {addHorseRace, updateLoad, updateHorseRaces} from "../store/actions"
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import href from '../component/href'
+
 var today = new Date();
 if((today.getMonth()+1) < 10){
     var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
@@ -55,7 +57,7 @@ function AddHorseRaceForm(){
     console.log(dateTime)
     useEffect(() =>{
         if(state.load.data[0]){
-            fetch('http://localhost:5000/api/horseRace').then(res => {
+            fetch(href+'api/horseRace').then(res => {
 
                 return res.json()
 
@@ -82,7 +84,7 @@ function AddHorseRaceForm(){
         let timestamp =(document.querySelector("#date").value) +":00.000Z"
         console.log(timestamp);
         /**/
-        axios.post('http://localhost:5000/api/horseRace/create', {
+        axios.post(href+'api/horseRace/create', {
             horseracename: document.querySelector("#horseracename").value,
             place: document.querySelector("#place").value,
             date: timestamp,

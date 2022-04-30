@@ -7,6 +7,8 @@ import {updateLoad} from "../store/actions"
 import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
+import href from '../component/href'
+
 var today = new Date();
 if((today.getMonth()+1) < 10){
     var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
@@ -47,7 +49,7 @@ function Winner(props){
 
         if(isLoading){
            
-            axios.post('http://localhost:5000/api/winner/isWinner', {
+            axios.post(href+'api/winner/isWinner', {
                 raceId: props.raceID,
 
             }).then(response => {
@@ -85,7 +87,7 @@ function Winner(props){
         const rndInt = Math.floor(Math.random() * amount) + 1
         //console.log(rndInt)
         let winner = props.horses[rndInt - 1]._id;
-        axios.post('http://localhost:5000/api/winner/create', {
+        axios.post(href+'api/winner/create', {
             raceId: props.raceID,
             horseId: winner,
         }).then(response => {
@@ -95,11 +97,11 @@ function Winner(props){
             console.log(error);
         });
 
-        axios.put('http://localhost:5000/api/horseRace/update/'+ props.raceID.toString(), {
+        axios.put(href+'api/horseRace/update/'+ props.raceID.toString(), {
             status: "ended",
         }).then(response => {
             console.log(response)
-            dispatch(updateLoad([false]))
+            dispatch(updateLoad([true]))
         }).catch(error => {
             console.log(error);
         });

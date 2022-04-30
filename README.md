@@ -28,9 +28,11 @@ Main Idea:
 
 </br>
 
-## What can be improved on:
+## What can be done next:
 * Maybe make a currency system, so users can actually win or lose currency
 * Add amount how much you would like to bet
+* Flexible design
+* User profiles
 
 </br>
 
