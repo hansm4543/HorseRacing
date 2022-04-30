@@ -17,21 +17,26 @@ function AddHorse(props){
     }
 
     function addHorseHandler(){
-        console.log(props.raceID)
-        axios.post('http://localhost:5000/api/horse/create', {
-            horseRaceId: props.raceID,
-            horseName: document.querySelector("#horsename").value,
-            color: document.querySelector("#colorPicker").value,
-            //status: document.querySelector("#status").value,
+        if(document.querySelector("#horsename").value === ""){
+            console.log("add name")
+        }else{
+            console.log(props.raceID)
+            axios.post('http://localhost:5000/api/horse/create', {
+                horseRaceId: props.raceID,
+                horseName: document.querySelector("#horsename").value,
+                color: document.querySelector("#colorPicker").value,
+                //status: document.querySelector("#status").value,
 
-        }).then(response => {
-            console.log(response);
-            dispatch(updateLoad([true]))
-            //routeChange()
+            }).then(response => {
+                console.log(response);
+                dispatch(updateLoad([true]))
+                //routeChange()
 
-        }).catch(error => {
-            console.log(error);
-        });
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+        
     }
 
 

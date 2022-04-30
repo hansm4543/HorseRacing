@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose')
 const ObjectId = Schema.Types.ObjectId
 
 const bettingSchema = new Schema({
+  raceId: { type: ObjectId, required: true },
   horseId: { type: ObjectId, required: true },
   userEmail: { type: String, required: true },
   amount: { type: Number, required: false },

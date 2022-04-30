@@ -10,14 +10,23 @@ import {addHorseRace, updateLoad, updateHorseRaces} from "../store/actions"
 import AddHorse from '../component/AddHorse';
 import HorseList from '../component/HorseList';
 
-let i;
-let element =[]
+
 function DetailedView(){
     let navigate = useNavigate(); 
+
 
     const raceID = window.location.href.split("/horseRace/")[1];
     //console.log(raceID)
     const [state, dispatch] = useContext(Context);
+
+    const handler = () =>{ 
+        let path = `/login`; 
+        navigate(path);
+    }
+
+    if (!state.auth.token) {
+        handler();
+    }
     const [isLoading, setIsLoading] = useState(true);
 
     const [detailedelement, setElement] = useState([]);
@@ -149,7 +158,7 @@ function DetailedView(){
                 <p>Status: {detailedelement[0].status}</p>
                 <p>CreatedAt: {detailedelement[0].createdAt}</p>
                 <AddHorse raceID={raceID}/>
-                <HorseList horses={allHorses[0]}/>
+                <HorseList horses={allHorses[0]} raceID={raceID}/>
     
             </div>
         )

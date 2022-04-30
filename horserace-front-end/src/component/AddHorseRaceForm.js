@@ -74,7 +74,7 @@ function AddHorseRaceForm(){
     },[ isLoading])
 
     const routeChange = () =>{ 
-        let path = `/`; 
+        let path = `/main`; 
         navigate(path);
     }
 

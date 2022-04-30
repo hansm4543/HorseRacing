@@ -1,0 +1,12 @@
+fetch('http://localhost:5000/api/betting/hasBetted', {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json, text/plain, */*',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    raceId: props.raceID,
+                    userEmail: state.auth.email
+                })
+              }).then(res => res.json())
+                .then(res => console.log(res));

@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
 const horseRaceRoutes = require('./routes/horseRace');
 const horseRoutes = require('./routes/horse');
+const bettingRoutes = require('./routes/betting');
 
 const app = express()
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/horseRace', horseRaceRoutes);
 app.use('/api/horse', horseRoutes);
+app.use('/api/betting', bettingRoutes);
 
 
 app.get('/', (req, res) => {

@@ -5,12 +5,22 @@ exports.getBettings = async (req, res) => {
   
   res.status(200).send(bettings)
 }
+exports.getBetting = async (req, res) => {
+    const { raceId,  userEmail} = req.params;
+
+    const bet = await Betting.find(req.body)
+    if (!bet){ 
+        res.status(404).send(`No`)
+    }
+    res.status(200).send(bet)
+}
 
 exports.createBetting = async (req, res) => {
 
-    const {horseId, userEmail} = req.body;
+    const {raceId, horseId, userEmail} = req.body;
 
   const newBetting = {
+    raceId,
     horseId,
     userEmail
   }
