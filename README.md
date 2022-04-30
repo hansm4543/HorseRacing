@@ -18,11 +18,13 @@ Main Idea:
 
 ## Application functional details:
 * Backend deployed at heroku: https://backend-horseracing.herokuapp.com/
+* Frontend deployed at heroku: https://frontend-horseracing.herokuapp.com/
 * You can see horserace listings
 * You can add a race
 * You can add horses to a race
 * You can see race's detailed view
 * You can bet on race
+* You can generate race Winner, when time is past race start time.
 * You can see if you won or not on race's detailedview
 
 
