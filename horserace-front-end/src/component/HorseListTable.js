@@ -48,7 +48,7 @@ function HorseListTable(props) {
       },
       {
         title: 'Name',
-        width: 150,
+        width: 100,
         dataIndex: 'horseName',
         key: 'horseName',
         
@@ -58,7 +58,7 @@ function HorseListTable(props) {
           title: 'Color',
           dataIndex: 'color',
           key: 'color',
-          width: 150,
+          width: 100,
           render(text, record) {
             return {
               props: {
@@ -90,7 +90,7 @@ function HorseListTable(props) {
       },
       {
         title: 'Name',
-        width: 150,
+        width: 100,
         dataIndex: 'horseName',
         key: 'horseName',
         
@@ -100,7 +100,7 @@ function HorseListTable(props) {
           title: 'Color',
           dataIndex: 'color',
           key: 'color',
-          width: 150,
+          width: 100,
           render(text, record) {
             return {
               props: {
@@ -142,7 +142,7 @@ function HorseListTable(props) {
       },
       {
         title: 'Name',
-        width: 150,
+        width: 100,
         dataIndex: 'horseName',
         key: 'horseName',
         
@@ -152,7 +152,7 @@ function HorseListTable(props) {
           title: 'Color',
           dataIndex: 'color',
           key: 'color',
-          width: 150,
+          width: 100,
           render(text, record) {
             return {
               props: {

@@ -4,7 +4,6 @@ const jwtAuth = require("./middleware/jwtAuth")
 require("dotenv").config()
 
 const authRoutes = require('./routes/auth');
-const postRoutes = require('./routes/post');
 const horseRaceRoutes = require('./routes/horseRace');
 const horseRoutes = require('./routes/horse');
 const bettingRoutes = require('./routes/betting');
@@ -34,7 +33,6 @@ app.use(function (req, res, next) {
 
 
 app.use('/api/auth', authRoutes);
-app.use('/api/post', postRoutes);
 app.use('/api/horseRace', horseRaceRoutes);
 app.use('/api/horse', horseRoutes);
 app.use('/api/betting', bettingRoutes);

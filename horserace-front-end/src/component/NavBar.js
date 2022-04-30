@@ -22,12 +22,11 @@ function Navbar (){
     } else {
         return (
             <div className="Navbar">
-                <div className="NavbarL">
+
                 <Link to ="/main">
-                    <img className="logo" src="/horse.png" alt="Veebilehe logo"></img>
+                    <img id='logoke' className="logo" src="/horse.png" alt="Veebilehe logo"></img>
                 </Link>
-                
-                </div>
+
             </div>
         );
     }
