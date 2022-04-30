@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Main from './Pages/Main'
 import DetailedView from './Pages/DetailedView'
-import AddHorseRaceForm from './component/AddHorseRaceForm';
+import AddHorseRaceForm from './Pages/AddHorseRaceForm';
 import HomePage from './Pages/HomePage';
 import LogIn from './Pages/LogIn';
 import Register from './Pages/Register';

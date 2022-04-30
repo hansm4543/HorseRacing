@@ -44,7 +44,7 @@ function AddHorse(props){
 
     return(
         <div className="addHorse">
-            <h1>Add a Horse Form</h1>
+            <h1>Add a Horse to the race</h1>
 
             <div>
                 
@@ -54,13 +54,13 @@ function AddHorse(props){
                     <input type="text" id='horsename' name='horsename'  size="50"/>
                 </label>
                 <br></br>   
-                <label htmlFor="colorPicker">Select color of the Horse:</label>
-                <br></br> 
+                <br></br>   
+                <label htmlFor="colorPicker">Select a color for the Horse:  </label>
+                <br></br>
                 <input type="color" id="colorPicker" name="colorPicker" defaultValue="#ff0000"/>
                 <br></br>
-                <br></br>
-                <div id='UpdateButton'>
-                <Button onClick={() => addHorseHandler()}> Add </Button>
+                <div className='UpdateButton'>
+                <Button id='UpdateButton' onClick={() => addHorseHandler()}> Add </Button>
                 </div>
              </form>
             </div>

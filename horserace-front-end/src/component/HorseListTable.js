@@ -5,6 +5,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import {Context} from "../store";
 import axios from 'axios'
 import Winner from '../component/Winner';
+import href from '../component/href'
+
 var today = new Date();
 if((today.getMonth()+1) < 10){
     var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
@@ -179,7 +181,7 @@ function HorseListTable(props) {
     
   const onBet= (record) => {
     console.log(record);
-    axios.post('http://localhost:5000/api/betting/create', {
+    axios.post(href+'api/betting/create', {
         raceId: props.raceID,
         horseId: record._id,
         userEmail: state.auth.email,
@@ -205,8 +207,8 @@ function HorseListTable(props) {
   if(props.bets.hasOwnProperty('horseId') === true){
     return(
       <div>
-        <Table columns={columns2} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
         <Winner raceID={props.raceID} date={props.date} userHorse={props.bets.horseId} horses={props.horses} yes={true}/>
+        <Table columns={columns2} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
       </div>
     )
   }
@@ -214,15 +216,15 @@ function HorseListTable(props) {
   if((dateTime+":00.000Z") > props.date){
     return (
       <div>
-          <Table columns={columns3} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
           <Winner raceID={props.raceID} date={props.date} horses={props.horses}/>
+          <Table columns={columns3} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
       </div>
     );
   }else{
     return (
       <div>
-          <Table columns={columns} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
           <Winner raceID={props.raceID} date={props.date} horses={props.horses} yes={false}/>
+          <Table columns={columns} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
       </div>
     );
   }

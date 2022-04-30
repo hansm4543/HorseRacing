@@ -118,25 +118,25 @@ function Winner(props){
         if(props.yes === true){
             if(props.userHorse === winner.horseId){
                 return(
-                    <div className="">
-                        <h1>You Won</h1>
-                        <p>Horse that won's id is: {winner.horseId}</p>
+                    <div className="raceStatus">
+                        <h2>You Won &#128076;</h2>
+                        <p>Horse that won is: <span className='winnerHorse'>{winner.horseId}</span></p>
                     </div>
                     )
             }else{
                 return(
-                <div className="">
-                    <h1>You Lost</h1>
-                    <p>Horse that won's id is: {winner.horseId}</p>
+                <div className="raceStatus">
+                    <h2>You Lost  &#128201;</h2>
+                    <p>Horse that won is: <span className='winnerHorse'>{winner.horseId}</span></p>
                 </div>
                 )
             }
 
         }else{
             return(
-                <div className="">
-                    <h1>You did not bet on this race</h1>
-                    <p>Horse that won's id is: {winner.horseId}</p>
+                <div className="raceStatus">
+                    <h2>You did not bet on this race &#128164;</h2>
+                    <p>Horse that won is: <span className='winnerHorse'>{winner.horseId}</span></p>
                 </div>
             )
         }
@@ -147,17 +147,17 @@ function Winner(props){
         //console.log(props.date)
         if((dateTime+":00.000Z") > props.date){
             return(
-                <div className="">
-                    <h1>Time to pull a winner</h1>
+                <div className="raceStatus">
+                    <h2>Time to pull a winner &#9200;</h2>
                     <Button onClick={() => onDrawWinner()}> Submit </Button>
                     
                 </div>
             )
         }else{
             return(
-                <div className="">
-                    <h1>Race has not started yet.</h1>
-                    <p>Race will start at: {props.date}</p>
+                <div className="raceStatus">
+                    <h2>Race has not started yet. &#8987;</h2>
+                    <p>Race will start at: <span className='winnerHorse'>{props.date}</span></p>
                     
                 </div>
             )

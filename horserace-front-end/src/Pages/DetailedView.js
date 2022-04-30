@@ -213,8 +213,9 @@ function DetailedView(){
                         <p className='grid-itemDetailedViewEmpty'></p>
                         <p className='grid-itemDetailedView'><span className="makeBold">Status: </span>{detailedelement[0].status}</p>
                     </div>
-                    <AddHorse raceID={raceID}/>
+                    
                     <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
+                    <AddHorse raceID={raceID}/>
                     
         
                 </div>

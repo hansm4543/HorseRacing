@@ -67,17 +67,21 @@ function HorseList(props){
     }
     if(bettings.hasOwnProperty('horseId') === true){
         return(
-        <div className="">
-            <h1>Horses in the race</h1>
-            <p>Your bet is on horse that is shown in orange</p>
+        <div >
+            <div className="HorseList">
+                <h1>Horses in the race</h1>
+                <p>Your money is on the horse that is shown in orange!</p>
+            </div>
             <HorseListTable horses={props.horses} bets={bettings} raceID={props.raceID} date={props.date}/>
         </div>
         )
 
     }else{
         return(
-            <div className="">
-                <h1>Horses in the race</h1>
+            <div>
+                <div className="HorseList">
+                    <h1>Horses in the race</h1>
+                </div>
                 <HorseListTable horses={props.horses} bets={bettings} eventHandler={eventHandler} raceID={props.raceID} date={props.date}/>
             </div>
         )

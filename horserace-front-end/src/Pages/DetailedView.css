@@ -2,9 +2,20 @@
     margin-left: 200px;
     margin-top: 100px;
 }
-#UpdateButton{
+.UpdateButton{
     margin-left: 250px;
 }
+#UpdateButton{
+    background-color: rgb(0, 204, 255);
+    background-size: auto;
+}
+#UpdateButton:hover{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(72, 126, 206);
+    background-size: auto;
+}
+
 /*
 input{
     border-radius: 20px;
@@ -28,10 +39,20 @@ input{
     padding: 10px;
 }
 
-.makeBold{
+.makeBold, .winnerHorse{
     font-weight: bold;
 }
 
-.DetailedViewItems{
+.DetailedViewItems, .HorseList, .addHorse, .raceStatus{
     margin-left: 30px;
+}
+#colorPicker{
+    border-radius: 30px;
+    border: 2px solid white;
+    color: white;
+    background-color: white;
+}
+#colorPicker:hover{
+    cursor: pointer;
+    border-radius: 30px;
 }

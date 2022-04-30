@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import href from '../component/href'
+import './AddHorseRaceForm.css';
 
 var today = new Date();
 if((today.getMonth()+1) < 10){
@@ -114,10 +115,9 @@ function AddHorseRaceForm(){
 
     return(
         <div>
-            <h1>Add a Horse Race Form</h1>
-
-            <div className='detailedView'>
-                
+            <div className='Heading'>
+                <h1>Add a Horse Race Form</h1>
+            
                 
                 <label>Name:
                 <br></br>
@@ -136,9 +136,8 @@ function AddHorseRaceForm(){
                 </label>
                 <br></br>
                 <br></br>
-                <div id='UpdateButton'>
-                <Button onClick={() => onSubmit()}> Submit </Button>
-                </div>
+
+                <Button id='insertRace' onClick={() => onSubmit()}> Submit </Button>
             </div>
         </div>
     )
