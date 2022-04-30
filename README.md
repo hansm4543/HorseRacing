@@ -17,19 +17,26 @@ Main Idea:
 * Application is deployed (to heroku, aws etc)
 
 ## Application functional details:
+* Backend deployed at heroku: https://backend-horseracing.herokuapp.com/
 * You can see horserace listings
 * You can add a race
+* You can add horses to a race
+* You can see race's detailed view
+* You can bet on race
+* You can see if you won or not on race's detailedview
 
 
 </br>
 
 ## What can be improved on:
-* coming soon
+* Maybe make a currency system, so users can actually win or lose currency
+* Add amount how much you would like to bet
 
 </br>
 
-## How to boot the application:
-* coming soon
+## How to boot the application(no point, because the application is deployed):
+* Open up cmd and cd into backend-node folder and then npm start
+* Open up another cmd and cd into horserace-front-end folder and then npm install. After packages are installed you can npm start and the application will pop up.
 
 </br>
 
