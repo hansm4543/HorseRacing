@@ -16,9 +16,15 @@ Main Idea:
 * At least some of the application is covered by tests
 * Application is deployed (to heroku, aws etc)
 
-## Application functional details:
+## Application deployment details:
+* PS on first launch application might take long time to boot and send fetches, because it is hosted on free account.
 * Backend deployed at heroku: https://backend-horseracing.herokuapp.com/
+* Backend heroku sends data to MongoDB Atlas
 * Frontend deployed at heroku: https://frontend-horseracing.herokuapp.com/
+
+</br>
+
+## Application functional details:
 * You can see horserace listings
 * You can add a race
 * You can add horses to a race
