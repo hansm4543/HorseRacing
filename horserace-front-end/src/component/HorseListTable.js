@@ -4,7 +4,33 @@ import 'antd/dist/antd.css';
 import React, { useEffect, useState, useContext } from 'react'
 import {Context} from "../store";
 import axios from 'axios'
+import Winner from '../component/Winner';
+var today = new Date();
+if((today.getMonth()+1) < 10){
+    var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
+}else if(((today.getMonth()+1) < 10) && ((today.getDate()) < 10)){
+    var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'- 0'+today.getDate();
+}else if(today.getDate() < 10){
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'- 0'+today.getDate();
+}else{
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+}
 
+if(today.getHours()< 10){
+    var time = "0"+ today.getHours() + ":" + today.getMinutes();
+
+}else if((today.getHours()< 10) && (today.getMinutes()< 10)){
+    var time = "0"+ today.getHours() + ":0" + today.getMinutes();
+
+}else if(today.getMinutes()< 10){
+    var time = today.getHours() + ":0" + today.getMinutes();
+
+}else{
+    var time = today.getHours() + ":" + today.getMinutes();
+
+}
+
+var dateTime = date+'T'+time;
 
 function HorseListTable(props) {
   const [state, dispatch] = useContext(Context);
@@ -53,6 +79,50 @@ function HorseListTable(props) {
             </div>,
           
         },
+    ];
+    const columns3 = [
+      
+      {
+        title: 'Id',
+        dataIndex: '_id',
+        key: '_id',
+        width: 100,
+      },
+      {
+        title: 'Name',
+        width: 150,
+        dataIndex: 'horseName',
+        key: 'horseName',
+        
+        //fixed: 'left',
+      },
+        {
+          title: 'Color',
+          dataIndex: 'color',
+          key: 'color',
+          width: 150,
+          render(text, record) {
+            return {
+              props: {
+                style: { background: text }
+              },
+              children: <div>{text}</div>
+            };
+            }
+        },
+        /*
+        {
+          title: 'Action',
+          key: 'operation',
+          fixed: 'right',
+          width: 100,
+          render: (record) => 
+          <div>
+            <Button onClick={() => onBet(record)}> Bet on this horse </Button>
+            </div>,
+          
+        },
+        */
     ];
     const columns2 = [
       
@@ -136,15 +206,27 @@ function HorseListTable(props) {
     return(
       <div>
         <Table columns={columns2} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
+        <Winner raceID={props.raceID} date={props.date} userHorse={props.bets.horseId} horses={props.horses} yes={true}/>
       </div>
     )
   }
 
-  return (
-    <div>
-        <Table columns={columns} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
-    </div>
-  );
+  if((dateTime+":00.000Z") > props.date){
+    return (
+      <div>
+          <Table columns={columns3} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
+          <Winner raceID={props.raceID} date={props.date} horses={props.horses}/>
+      </div>
+    );
+  }else{
+    return (
+      <div>
+          <Table columns={columns} dataSource={props.horses} scroll={{ x: 1500, y: 700 }}  onChange={onChange}/>
+          <Winner raceID={props.raceID} date={props.date} horses={props.horses} yes={false}/>
+      </div>
+    );
+  }
+  
 }
 
 export default HorseListTable;

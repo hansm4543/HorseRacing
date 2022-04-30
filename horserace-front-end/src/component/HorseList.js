@@ -69,7 +69,7 @@ function HorseList(props){
         <div className="">
             <h1>Horses in the race</h1>
             <p>Your bet is on horse that is shown in orange</p>
-            <HorseListTable horses={props.horses} bets={bettings}/>
+            <HorseListTable horses={props.horses} bets={bettings} raceID={props.raceID} date={props.date}/>
         </div>
         )
 
@@ -77,7 +77,7 @@ function HorseList(props){
         return(
             <div className="">
                 <h1>Horses in the race</h1>
-                <HorseListTable horses={props.horses} bets={bettings} eventHandler={eventHandler} raceID={props.raceID}/>
+                <HorseListTable horses={props.horses} bets={bettings} eventHandler={eventHandler} raceID={props.raceID} date={props.date}/>
             </div>
         )
     }

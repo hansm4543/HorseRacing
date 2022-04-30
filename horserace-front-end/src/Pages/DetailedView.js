@@ -9,6 +9,32 @@ import './DetailedView.css';
 import {addHorseRace, updateLoad, updateHorseRaces} from "../store/actions"
 import AddHorse from '../component/AddHorse';
 import HorseList from '../component/HorseList';
+var today = new Date();
+if((today.getMonth()+1) < 10){
+    var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'-'+today.getDate();
+}else if(((today.getMonth()+1) < 10) && ((today.getDate()) < 10)){
+    var date = today.getFullYear()+'-0'+(today.getMonth()+1)+'- 0'+today.getDate();
+}else if(today.getDate() < 10){
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'- 0'+today.getDate();
+}else{
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+}
+
+if(today.getHours()< 10){
+    var time = "0"+ today.getHours() + ":" + today.getMinutes();
+
+}else if((today.getHours()< 10) && (today.getMinutes()< 10)){
+    var time = "0"+ today.getHours() + ":0" + today.getMinutes();
+
+}else if(today.getMinutes()< 10){
+    var time = today.getHours() + ":0" + today.getMinutes();
+
+}else{
+    var time = today.getHours() + ":" + today.getMinutes();
+
+}
+
+var dateTime = date+'T'+time;
 
 
 function DetailedView(){
@@ -148,8 +174,9 @@ function DetailedView(){
 
     
     if(alreadyloaded === false){
-        return(
-            <div>
+        if((dateTime+":00.000Z") > detailedelement[0].date){
+            return (
+                <div>
                 <h1>DetailedView</h1>
                 <p>ID: {detailedelement[0]._id}</p>
                 <p>Name: {detailedelement[0].horseracename}</p>
@@ -157,11 +184,28 @@ function DetailedView(){
                 <p>Place: {detailedelement[0].place}</p>
                 <p>Status: {detailedelement[0].status}</p>
                 <p>CreatedAt: {detailedelement[0].createdAt}</p>
-                <AddHorse raceID={raceID}/>
-                <HorseList horses={allHorses[0]} raceID={raceID}/>
+                <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
+                
     
             </div>
-        )
+            );
+        }else{
+            return(
+                <div>
+                    <h1>DetailedView</h1>
+                    <p>ID: {detailedelement[0]._id}</p>
+                    <p>Name: {detailedelement[0].horseracename}</p>
+                    <p>Date: {detailedelement[0].date}</p>
+                    <p>Place: {detailedelement[0].place}</p>
+                    <p>Status: {detailedelement[0].status}</p>
+                    <p>CreatedAt: {detailedelement[0].createdAt}</p>
+                    <AddHorse raceID={raceID}/>
+                    <HorseList horses={allHorses[0]} raceID={raceID} date={detailedelement[0].date}/>
+                    
+        
+                </div>
+            )
+        }
     }
     return(
         <div>

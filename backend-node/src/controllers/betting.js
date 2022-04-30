@@ -35,22 +35,22 @@ exports.createBetting = async (req, res) => {
 exports.updateBetting = async (req, res) => {
   const { id } = req.params;
 
-  const horse = await Betting.findOneAndUpdate({ _id: id }, req.body)
+  const bet = await Betting.findOneAndUpdate({ _id: id }, req.body)
 
-  if (!horse) res.status(404).send("No horse with that id found")
+  if (!bet) res.status(404).send("No bet with that id found")
 
   const updatedBetting = await Betting.findOne({ _id: id })
 
-  res.status(200).send(`Successfully updated the following horse: \n ${updatedBetting}`)
+  res.status(200).send(`Successfully updated the following bet: \n ${updatedBetting}`)
 }
 
 exports.deleteBetting = async (req, res) => {
   const { id } = req.params;
 
-  const horse = await Betting.findOneAndDelete({ _id: id })
+  const bet = await Betting.findOneAndDelete({ _id: id })
 
-  if (!horse) res.status(404).send("No horse with that id found")
-  console.log(horse)
+  if (!bet) res.status(404).send("No bet with that id found")
+  console.log(bet)
 
-  res.status(200).send(`Successfully deleted the following horse: \n ${horse}`)
+  res.status(200).send(`Successfully deleted the following bet: \n ${bet}`)
 }
