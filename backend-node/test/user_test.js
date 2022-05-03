@@ -7,9 +7,9 @@ let user;
 
     beforeEach((done) => {
         user = new User({
-            firstName: "Hans",
-            lastName: "Pringel",
-            email: "hans@pringel.com",
+            firstName: "Meelis",
+            lastName: "Suslik",
+            email: "suslik@gmail.com",
             password: "12345678"         
             });
         user.save()
@@ -24,18 +24,18 @@ let user;
 
 
     it('Double registration prevention test', (done) => {
-    User.findOne({ email: 'hans@pringel.com' })
+    User.findOne({ email: 'suslik@gmail.com' })
         .then((user) => {
-            assert(user.email === 'hans@pringel.com');
+            assert(user.email === 'suslik@gmail.com');
             done();
         });
     });
 
 
     it('Login test', (done) => {
-        User.findOne({ email: 'hans@pringel.com' })
+        User.findOne({ email: 'suslik@gmail.com' })
             .then((user) => {
-                assert(user.email === 'hans@pringel.com', user.password === '12345678');
+                assert(user.email === 'suslik@gmail.com', user.password === '12345678');
                 done();
             });
     });  
