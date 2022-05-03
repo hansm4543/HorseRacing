@@ -17,7 +17,7 @@ Main Idea:
 * Application is deployed (to heroku, aws etc)
 
 ## Application deployment details:
-* PS on first launch application might take long time to boot and send fetches, because it is hosted on free account.
+* PS on first launch definately open both heroku webpages for the application to boot up. Application usually takes a bit of time to boot, sometimes you might even see some errors then just refresh the page until it boots up, this happens because it is hosted on free account.
 * Backend deployed at heroku: https://backend-horseracing.herokuapp.com/
 * Backend heroku sends data to MongoDB Atlas
 * Frontend deployed at heroku: https://frontend-horseracing.herokuapp.com/
@@ -46,7 +46,15 @@ Main Idea:
 
 ## How to boot the application(no reason to do that, because the application is deployed):
 * Open up cmd and cd into backend-node folder and then npm start
-* Open up another cmd and cd into horserace-front-end folder and then npm install. After packages are installed you can npm start and the application will pop up.
+* Open up another CMD and cd into horserace-front-end folder and then npm install. After packages are installed you can npm start and the application will pop up.
+
+</br>
+
+## Testid
+* For the Backend test you need to open up cmd and cd into backend-node folder. Inside backend folder you can type npm test and it will do the rest automatically.
+* For the frontend test to run you need to go to the App.js file and delete the Navbar component and then the test will run perfectly fine. We must remove it for the test to run, because the navbar compnent uses usecontext and npm test doesn't like that. Also we don't need to test navbar, because there isn't anything important for the application to work. If the Navbar is removed then open up CMD and cd into horserace-front-end folder and then npm test and it will do the rest automatically.
+
+![Source code](images/test.PNG)
 
 </br>
 
