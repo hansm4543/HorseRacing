@@ -26,12 +26,15 @@ Main Idea:
 
 ## Application functional details:
 * You can see horserace listings
+* You filter races by status
+* You sort races by date(ascending, descending)
 * You can add a race
 * You can add horses to a race
 * You can see race's detailed view
 * You can bet on race
 * You can generate race Winner, when time is past race start time.
 * You can see if you won or not on race's detailedview
+* If you would like to see some old race result then on main page you can sort for ended races and find one you like and then open race details and there is shown who won.
 
 
 </br>
