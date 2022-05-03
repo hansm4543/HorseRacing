@@ -50,7 +50,7 @@ Main Idea:
 
 </br>
 
-## Testid
+## Tests
 * For the Backend test you need to open up cmd and cd into backend-node folder. Inside backend folder you can type npm test and it will do the rest automatically.
 * For the frontend test to run you need to go to the App.js file and delete the Navbar component and then the test will run perfectly fine. We must remove it for the test to run, because the navbar compnent uses usecontext and npm test doesn't like that. Also we don't need to test navbar, because there isn't anything important for the application to work. If the Navbar is removed then open up CMD and cd into horserace-front-end folder and then npm test and it will do the rest automatically.
 
